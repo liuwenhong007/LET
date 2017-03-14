@@ -20,17 +20,17 @@ if (DEBUG) {
     config.lib_css.forEach(function (style) {
         commonCssHtml += '<link href="' + style + '" rel="stylesheet"/>';
     });
-    /*config.hack_js.forEach(function (script) {
+    config.hack_js.forEach(function (script) {
      commonJsHtml += '<script src="' + script + '"></script>';
      });
-     config.lib_js.forEach(function (script) {
+    config.lib_js.forEach(function (script) {
      commonJsHtml += '<script src="' + script + '"></script>';
      });
-     commonJsHtml += '<script src="' + config.config_file.src + '/' + config.config_file.srcName + '"></script>';
+    /* commonJsHtml += '<script src="' + config.config_file.src + '/' + config.config_file.srcName + '"></script>';
      config.hack_ie_low_js.forEach(function (script) {
      hackJsHtml += '<script src="' + script + '"></script>';
      });
-     config.root_copy_set.forEach(function (obj) {
+    config.root_copy_set.forEach(function (obj) {
      rootJsHtml += '<script>' + fs.readFileSync(obj.src, "utf8") + '</script>';
      })*/
 } else {
@@ -142,6 +142,8 @@ module.exports = {
             filename: 'index.html',
             template: './src/tpl/index.ejs',
             commonCss: commonCssHtml,
+            commonJs: commonJsHtml,
+            hackJs: hackJsHtml,
             hash: true,
             chunks: [
                 'common', 'index'
