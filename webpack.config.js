@@ -55,8 +55,12 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
+                exclude: /(node_modules|bower_components)/,
+                include: path.resolve(__dirname, 'src'),
+                use:{
+                    loader: 'babel-loader?cacheDirectory'
+                }
+
             },
             /*{
              test: /\.css$/,
@@ -107,14 +111,13 @@ module.exports = {
             path.resolve('./src'),
             'node_modules'
         ],
-        extensions: ['.js', '.json', '.less', '.scss'],
+        extensions: ['.js', '.less'],
         alias: {}
     },
     externals: {
-        'jquery': 'window.$',
-        'lodash': 'window._'
+
     },
-    devtool: '',
+    devtool: 'eval',
     plugins: [
         /*new BrowserSyncPlugin({
          // browse to http://localhost:3000/ during development,
@@ -127,12 +130,7 @@ module.exports = {
             root: path.resolve('./dist')
         }),
         new ExtractTextPlugin({filename: "css/[name].css", allChunks: true}),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            "_": "lodash"
-        }),
+        new webpack.ProvidePlugin({}),
         new CommonsChunkPlugin({
             name: "common",
             filename: 'js/common.js',
@@ -144,7 +142,7 @@ module.exports = {
             commonCss: commonCssHtml,
             commonJs: commonJsHtml,
             hackJs: hackJsHtml,
-            hash: true,
+            hash:true,
             chunks: [
                 'common', 'index'
             ]
@@ -170,8 +168,7 @@ module.exports = {
         contentBase: path.join(__dirname, './src'),
         publicPath: '/',
         host: "0.0.0.0",
-        compress: true,
-        port: 3000,
-        hot: true
+        compress: false,//压缩
+        port: 3000
     }
 };

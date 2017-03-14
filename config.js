@@ -33,8 +33,7 @@ module.exports = {
         '/plugins/moment/moment.min.js',
         '/plugins/daterangepicker/daterangepicker.js',
         '/plugins/slimScroll/jquery.slimscroll.js',
-        '/plugins/fastclick/fastclick.js',
-        '/'
+        '/plugins/fastclick/fastclick.js'
     ],
     buildPath: './dist'
 }
