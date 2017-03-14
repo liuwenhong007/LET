@@ -11,9 +11,38 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const config = require('./config.js');
 const DEBUG = process.env.NODE_ENV == 'prod';
 
+var commonCssHtml = '';
+var commonJsHtml = '';
+var rootJsHtml = '';
+var hackJsHtml = '';
 
-
-
+if (DEBUG) {
+    config.lib_css.forEach(function (style) {
+        commonCssHtml += '<link href="' + style + '" rel="stylesheet"/>';
+    });
+    /*config.hack_js.forEach(function (script) {
+     commonJsHtml += '<script src="' + script + '"></script>';
+     });
+     config.lib_js.forEach(function (script) {
+     commonJsHtml += '<script src="' + script + '"></script>';
+     });
+     commonJsHtml += '<script src="' + config.config_file.src + '/' + config.config_file.srcName + '"></script>';
+     config.hack_ie_low_js.forEach(function (script) {
+     hackJsHtml += '<script src="' + script + '"></script>';
+     });
+     config.root_copy_set.forEach(function (obj) {
+     rootJsHtml += '<script>' + fs.readFileSync(obj.src, "utf8") + '</script>';
+     })*/
+} else {
+    commonCssHtml = '<link href="' + config.publicPath + 'lib/' + config.file_name + '.css" rel="stylesheet"/>';
+    /*  commonJsHtml = '<script src="' + config.publicPath + 'lib/' + config.hack_file_name + '"></script>'
+     commonJsHtml += '<script src="' + config.publicPath + 'lib/' + config.file_name + '.js"></script>';
+     commonJsHtml += '<script src="' + config.config_file.target + '/' + config.config_file.targetName + '"></script>';
+     hackJsHtml += '<script src="' + config.publicPath + 'lib/' + config.hack_ie_low_file_name + '"></script>'
+     config.root_copy_set.forEach(function (obj) {
+     rootJsHtml += '<script src="' + obj.target + obj.src.substring(obj.src.lastIndexOf('/'), obj.src.length) + '"></script>';
+     })*/
+}
 
 module.exports = {
     entry: config.enter,
@@ -47,7 +76,7 @@ module.exports = {
                 test: /\.less/,
                 loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
-                    use: "css-loader?"+(DEBUG?"":"minimize")+"!autoprefixer-loader!less-loader"
+                    use: "css-loader?" + (DEBUG ? "" : "minimize") + "!autoprefixer-loader!less-loader"
                 }),
                 //publicPath: "/dist"
             },
@@ -70,7 +99,7 @@ module.exports = {
             {
                 test: /\.tpl$/,
                 loader: 'raw-loader'
-            },
+            }
         ]
     },
     resolve: {
@@ -87,7 +116,7 @@ module.exports = {
     },
     devtool: '',
     plugins: [
-         /*new BrowserSyncPlugin({
+        /*new BrowserSyncPlugin({
          // browse to http://localhost:3000/ during development,
          // ./public directory is being served
          host: 'localhost',
@@ -96,7 +125,7 @@ module.exports = {
          }),*/
         new CleanPlugin(['*'], {
             root: path.resolve('./dist')
-         }),
+        }),
         new ExtractTextPlugin({filename: "css/[name].css", allChunks: true}),
         new webpack.ProvidePlugin({
             $: "jquery",
@@ -111,14 +140,15 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './src/tpl/index.tpl',
+            template: './src/tpl/index.ejs',
+            commonCss: commonCssHtml,
             hash: true,
             chunks: [
-                'common','index'
+                'common', 'index'
             ]
         }),
         new TransferWebpackPlugin([
-            {from: './src/common/css/img',to:'./img'}
+            {from: './src/common/css/img', to: './img'}
         ])
         // new webpack.optimize.UglifyJsPlugin({
         //     minimize: true,

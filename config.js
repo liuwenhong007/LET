@@ -6,7 +6,10 @@ module.exports = {
         index:'./src/pages/index.js'
     },
     lib_css:[
-        'bootstrap/css/bootstrap.min.css'
+        '/plugins/bootstrap/css/bootstrap.min.css',
+        '/plugins/font-awesome/font-awesome.min.css',
+        '/plugins/ionicons/ionicons.min.css',
+        '/plugins/ionicons/ionicons.min.css'
     ],
     buildPath:'./dist'
 }
