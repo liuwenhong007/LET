@@ -680,9 +680,7 @@ function _init() {
  * @usage $("#box-widget").removeBox();
  */
 (function ($) {
-
     'use strict';
-
     $.fn.activateBox = function () {
         $.AdminLTE.boxWidget.activate(this);
     };
