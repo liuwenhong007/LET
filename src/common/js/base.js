@@ -298,7 +298,6 @@ function _init() {
         activate: function (toggleBtn) {
             //Get the screen sizes
             var screenSizes = $.AdminLTE.options.screenSizes;
-
             //Enable sidebar toggle
             $(document).on('click', toggleBtn, function (e) {
                 e.preventDefault();
@@ -364,6 +363,7 @@ function _init() {
 
     /* Tree()
      * ======
+     * 转换成一个多层次的树状视图菜单栏。
      * Converts the sidebar into a multilevel
      * tree view menu.
      *
@@ -419,6 +419,7 @@ function _init() {
 
     /* ControlSidebar
      * ==============
+     * 将功能添加到右侧边栏
      * Adds functionality to the right sidebar
      *
      * @type Object
@@ -582,7 +583,7 @@ function _init() {
 
 
 /* ------------------
- * - Custom Plugins -
+ * - Custom Plugins 自定义插件 -
  * ------------------
  * All custom plugins are defined below.
  */
@@ -590,6 +591,7 @@ function _init() {
 /*
  * BOX REFRESH BUTTON
  * ------------------
+ * 这是一个自定义插件，用于与组件框。它允许您添加一个刷新按钮的框。它将框的状态转换为加载状态。
  * This is a custom plugin to use with the component BOX. It allows you to add
  * a refresh button to the box. It converts the box's state to a loading state.
  *
@@ -671,6 +673,7 @@ function _init() {
 /*
  * EXPLICIT BOX CONTROLS
  * -----------------------
+ * 这是一个自定义插件，用于与组件框。它允许你激活一个盒插入DOM在app.js加载，切换和卸箱。
  * This is a custom plugin to use with the component BOX. It allows you to activate
  * a box inserted in the DOM after the app.js was loaded, toggle and remove box.
  *
@@ -702,6 +705,7 @@ function _init() {
 /*
  * TODO LIST CUSTOM PLUGIN
  * -----------------------
+ * 这取决于我的插件，插件，多选和单选的输入
  * This plugin depends on iCheck plugin for checkbox and radio inputs
  *
  * @type plugin
