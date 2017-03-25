@@ -11,4 +11,7 @@ require('common/css/less/bootstrap-social.less');
 // Skins minified
 require('common/css/less/skins/_all-skins.less');
 
-require('common/js/base.js');
+
+
+
+avalon.config({DEBUG:true});

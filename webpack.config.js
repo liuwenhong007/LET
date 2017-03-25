@@ -101,7 +101,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.tpl$/,
+                test: /\.html$/,
                 loader: 'raw-loader'
             }
         ]

@@ -3,7 +3,7 @@
  */
 module.exports = {
     enter: {
-        index: './src/pages/index.js'
+        index: './src/pages/index/index.js'
     },
     lib_css: [
         '/plugins/bootstrap/css/bootstrap.min.css',
@@ -34,7 +34,8 @@ module.exports = {
         //'/plugins/daterangepicker/daterangepicker.js',
         '/plugins/slimScroll/jquery.slimscroll.js',
         '/plugins/fastclick/fastclick.js',
-        '/plugins/avalon/avalon.js'
+        '/plugins/avalon/avalon.js',
+        '/plugins/avalon/mmRouter.js'
     ],
     buildPath: './dist'
 }
