@@ -13,7 +13,11 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div ms-controller="root">
-    <div ms-html="@mainPage"></div>
+    <div class="wrapper">
+        <xmp is="ms-page-head"></xmp>
+        <xmp is="ms-page-sideBar"></xmp>
+        <div ms-html="@mainPage"></div>
+    </div>
 </div>
 
 <%= htmlWebpackPlugin.options.commonJs %>
