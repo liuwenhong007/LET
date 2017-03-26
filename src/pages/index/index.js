@@ -3,9 +3,8 @@
  */
 require('common/js/init.js');
 let init = require('router');
-
-
-init().then(function(){
-    
-require('common/js/base.js');
-})
+require('include/header');
+require('include/sidebar');
+init().then(function () {
+    require('common/js/base.js');
+});
