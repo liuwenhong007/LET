@@ -34,7 +34,18 @@ if (DEBUG) {
      rootJsHtml += '<script>' + fs.readFileSync(obj.src, "utf8") + '</script>';
      })*/
 } else {
-    commonCssHtml = '<link href="' + config.publicPath + 'lib/' + config.file_name + '.css" rel="stylesheet"/>';
+    config.lib_css.forEach(function (style) {
+        commonCssHtml += '<link href="' + style + '" rel="stylesheet"/>';
+    });
+    config.hack_js.forEach(function (script) {
+        commonJsHtml += '<script src="' + script + '"></script>';
+    });
+    config.lib_js.forEach(function (script) {
+        commonJsHtml += '<script src="' + script + '"></script>';})
+    /*commonCssHtml = '<link href="/css/common_lib.min.css" rel="stylesheet"/>';
+    commonJsHtml = '<script src="/js/common_lib.min.js"  />';
+    hackJsHtml = '<script src="/js/hack.js"  />';*/
+    //commonCssHtml = '<link href="' + config.buildPath + 'css/' + config.file_name + '.css" rel="stylesheet"/>';
     /*  commonJsHtml = '<script src="' + config.publicPath + 'lib/' + config.hack_file_name + '"></script>'
      commonJsHtml += '<script src="' + config.publicPath + 'lib/' + config.file_name + '.js"></script>';
      commonJsHtml += '<script src="' + config.config_file.target + '/' + config.config_file.targetName + '"></script>';
@@ -43,7 +54,6 @@ if (DEBUG) {
      rootJsHtml += '<script src="' + obj.target + obj.src.substring(obj.src.lastIndexOf('/'), obj.src.length) + '"></script>';
      })*/
 }
-
 module.exports = {
     entry: config.enter,
     output: {
@@ -148,8 +158,9 @@ module.exports = {
             ]
         }),
         new TransferWebpackPlugin([
-            {from: './src/common/css/img', to: './img'}
-        ])
+            {from: './src/common/css/img', to: './img'},
+            {from: './src/plugins', to: './plugins'}
+        ]),
         // new webpack.optimize.UglifyJsPlugin({
         //     minimize: true,
         //     compress: {
@@ -158,11 +169,11 @@ module.exports = {
         //     comments: false
         // }),
         //生成编译之后的文件映射
-        /*function () {
+        function () {
          this.plugin('done', function(stats){
-         require('fs').writeFileSync(path.join(config.mapPath, "map.json"), JSON.stringify(stats.toJson().assetsByChunkName, null, 4));
+        // require('fs').writeFileSync(path.join(config.mapPath, "map.json"), JSON.stringify(stats.toJson().assetsByChunkName, null, 4));
          })
-         }*/
+         }
     ],
     devServer: {
         contentBase: path.join(__dirname, './src'),
