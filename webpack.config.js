@@ -41,7 +41,8 @@ if (DEBUG) {
         commonJsHtml += '<script src="' + script + '"></script>';
     });
     config.lib_js.forEach(function (script) {
-        commonJsHtml += '<script src="' + script + '"></script>';})
+        commonJsHtml += '<script src="' + script + '"></script>';
+    })
     /*commonCssHtml = '<link href="/css/common_lib.min.css" rel="stylesheet"/>';
     commonJsHtml = '<script src="/js/common_lib.min.js"  />';
     hackJsHtml = '<script src="/js/hack.js"  />';*/
@@ -127,7 +128,7 @@ module.exports = {
     externals: {
 
     },
-    devtool: 'eval',
+    devtool: DEBUG ? 'eval' :'',
     plugins: [
         /*new BrowserSyncPlugin({
          // browse to http://localhost:3000/ during development,

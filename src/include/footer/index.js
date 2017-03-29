@@ -1,9 +1,8 @@
-avalon.component('ms-page-sideBar', {
+avalon.component('ms-page-footer', {
     template: require('./template.html'),
     defaults: {
-        path:'',
         onReady(e) {
-           console.log(this.path)
+           
         },
         onDispose(e) {
             

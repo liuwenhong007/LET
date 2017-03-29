@@ -462,6 +462,7 @@ function _init() {
       //Listen to the click event
       btn.on('click', function (e) {
         e.preventDefault();
+        console.log(11);
         //If the sidebar is not open
         if (!sidebar.hasClass('control-sidebar-open')
           && !$('body').hasClass('control-sidebar-open')) {

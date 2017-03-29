@@ -1,6 +1,6 @@
 let vmRoot;             //全局vm
 let states = {};    //记录所以状态对应vm内容
-
+let $def = $.Deferred();
 //路由定义
 let routerConfig = [
     {
@@ -33,7 +33,8 @@ avalon.component('ms-page-view', {
             let vm = avalon.vmodels[state.vm.$id] = state.vm;
             vm.init && vm.init();
             setTimeout(function() {//必须等它扫描完这个template,才能替换
-                e.vmodel.page = state.html
+                e.vmodel.page = state.html;
+                $def.resolve();
             },100)
         },
         onDispose(e) {
@@ -68,7 +69,6 @@ let  addStateRouter = function(){
 };
 
 module.exports = init = function(){
-    let $def = $.Deferred();
     vmRoot = avalon.define({
         $id: "root",
         currPath: '',               //当前路径k
@@ -85,7 +85,7 @@ module.exports = init = function(){
 
     avalon.ready(function() {
         avalon.scan(document.body);
-        $def.resolve();
+
     });
     return $def.promise();
 };

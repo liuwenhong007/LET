@@ -15,8 +15,9 @@
 <div ms-controller="root">
     <div class="wrapper">
         <xmp is="ms-page-head"></xmp>
-        <xmp is="ms-page-sideBar"></xmp>
-        <div ms-html="@mainPage"></div>
+        <xmp is="ms-page-sideBar" ms-widget="{path:@currPath}"></xmp>
+        <div ms-html="@mainPage" class="content-wrapper"></div>
+        <xmp is="ms-page-footer"></xmp>
     </div>
 </div>
 
