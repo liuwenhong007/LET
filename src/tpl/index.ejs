@@ -12,15 +12,12 @@
     <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div ms-controller="root">
-    <div class="wrapper">
+    <div ms-controller="root" class="wrapper">
         <xmp is="ms-page-head"></xmp>
         <xmp is="ms-page-sideBar" ms-widget="{path:@currPath}"></xmp>
         <div ms-html="@mainPage" class="content-wrapper"></div>
         <xmp is="ms-page-footer"></xmp>
     </div>
-</div>
-
-<%= htmlWebpackPlugin.options.commonJs %>
+    <%= htmlWebpackPlugin.options.commonJs %>
 </body>
 </html>

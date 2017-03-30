@@ -1,5 +1,8 @@
 let vm = avalon.define({
-    $id:"ms-detail"
+    $id:"ms-detail",
+    init(){
+        
+    }
 });
 
 module.exports = {vm};

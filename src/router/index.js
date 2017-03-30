@@ -34,7 +34,7 @@ avalon.component('ms-page-view', {
             vm.init && vm.init();
             setTimeout(function() {//必须等它扫描完这个template,才能替换
                 e.vmodel.page = state.html;
-                $def.resolve();
+                $def.resolve({path:path});
             },100)
         },
         onDispose(e) {

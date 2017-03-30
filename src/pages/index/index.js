@@ -7,8 +7,12 @@ require('include/sidebar');
 require('include/footer');
 let init = require('router');
 avalon.config({debug: true});
-init().then(function () {
+
+
+init().then(function (data) {
+
     require.ensure('common/js/base.js', function(require){
         require('common/js/base.js');
     });
+    
 });

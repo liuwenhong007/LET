@@ -3,7 +3,6 @@ avalon.component('ms-page-sideBar', {
     defaults: {
         path:'',
         onReady(e) {
-           console.log(this.path)
         },
         onDispose(e) {
             
