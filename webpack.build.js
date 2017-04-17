@@ -2,29 +2,45 @@ const config = require('./config.js');
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports ={
-  entry: {index:'./src/pages/index/index.js',
-    vendor: config.lib_js.map(function(script){
-      return path.resolve('./src'+script);
-    }),
-  },
-  output: {
-    path: path.resolve(config.buildPath),
-    filename: 'js/index.js',
-    publicPath: '/'
-  },
-  resolve:{
+const lib = {
+    "common":'./index.js'
+    // "common": [
+    //     'jquery',
+    //     'jqueryUi',
+    //     'bootstrap',
+    //     'slimscroll',
+    //     'fastclick',
+    //     'avalon2',
+    //     'mmRouter'
+    // ]
+};
 
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
-
-      minChunks: Infinity,
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
-    })
-  ]
+module.exports = {
+    entry: {
+        "common_lib": lib.common
+    },
+    output: {
+        path: path.join(__dirname, 'src', 'lib'),
+        filename: '[name].js',
+        publicPath: '/'
+    },
+    resolve: {
+        alias: {
+            // 'libs': path.resolve(__dirname, 'src'),
+            // 'jquery': 'libs/plugins/jQuery/jquery-2.2.3.min.js',
+            // 'jqueryUi': 'libs/plugins/jQueryUI/jquery-ui.min.js',
+            // 'bootstrap':'libs/plugins/bootstrap/js/bootstrap.min.js',
+            // 'slimscroll':'libs/plugins/slimScroll/jquery.slimscroll.js',
+            // 'fastclick':'libs/plugins/fastclick/fastclick.js',
+            // 'avalon2':'libs/plugins/avalon/avalon.js',
+            // 'mmRouter':'libs/plugins/avalon/mmRouter.js'
+        }
+    },
+    plugins: [
+        new webpack.DllPlugin({
+            path: path.join(__dirname, "manifest.json"),
+            name: '[name]',
+            context: __dirname
+        })
+    ]
 };

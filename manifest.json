@@ -1,0 +1,41 @@
+{
+  "name": "common_lib",
+  "content": {
+    "./src/plugins/jQuery/jquery-2.2.3.min.js": {
+      "id": 0,
+      "meta": {}
+    },
+    "./src/plugins/avalon/avalon.js": {
+      "id": 1,
+      "meta": {}
+    },
+    "./src/plugins/avalon/mmRouter.js": {
+      "id": 2,
+      "meta": {}
+    },
+    "./src/plugins/bootstrap/js/bootstrap.min.js": {
+      "id": 3,
+      "meta": {}
+    },
+    "./src/plugins/fastclick/fastclick.js": {
+      "id": 4,
+      "meta": {}
+    },
+    "./src/plugins/jQueryUI/jquery-ui.min.js": {
+      "id": 5,
+      "meta": {}
+    },
+    "./src/plugins/slimScroll/jquery.slimscroll.js": {
+      "id": 6,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/amd-options.js": {
+      "id": 7,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/global.js": {
+      "id": 8,
+      "meta": {}
+    }
+  }
+}

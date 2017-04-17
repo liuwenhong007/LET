@@ -26,6 +26,7 @@ if (DEBUG) {
     config.lib_js.forEach(function (script) {
      commonJsHtml += '<script src="' + script + '"></script>';
      });
+    //  commonJsHtml += '<script src="lib/common_lib.js"></script>';
     /* commonJsHtml += '<script src="' + config.config_file.src + '/' + config.config_file.srcName + '"></script>';
      config.hack_ie_low_js.forEach(function (script) {
      hackJsHtml += '<script src="' + script + '"></script>';
